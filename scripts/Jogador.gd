@@ -33,21 +33,21 @@ func _process(delta):
 				
 		elif Input.is_key_pressed(KEY_1) or Input.is_key_pressed(KEY_KP_1):
 			atualiza_display('1')
-		elif Input.is_key_pressed(KEY_2):
+		elif Input.is_key_pressed(KEY_2) or Input.is_key_pressed(KEY_KP_2):
 			atualiza_display('2')
-		elif Input.is_key_pressed(KEY_3):
+		elif Input.is_key_pressed(KEY_3) or Input.is_key_pressed(KEY_KP_3):
 			atualiza_display('3')
-		elif Input.is_key_pressed(KEY_4):
+		elif Input.is_key_pressed(KEY_4) or Input.is_key_pressed(KEY_KP_4):
 			atualiza_display('4')
-		elif Input.is_key_pressed(KEY_5):
+		elif Input.is_key_pressed(KEY_5) or Input.is_key_pressed(KEY_KP_5):
 			atualiza_display('5')
-		elif Input.is_key_pressed(KEY_6):
+		elif Input.is_key_pressed(KEY_6) or Input.is_key_pressed(KEY_KP_6):
 			atualiza_display('6')
-		elif Input.is_key_pressed(KEY_7):
+		elif Input.is_key_pressed(KEY_7) or Input.is_key_pressed(KEY_KP_7):
 			atualiza_display('7')
-		elif Input.is_key_pressed(KEY_8):
+		elif Input.is_key_pressed(KEY_8) or Input.is_key_pressed(KEY_KP_8):
 			atualiza_display('8')
-		elif Input.is_key_pressed(KEY_9):
+		elif Input.is_key_pressed(KEY_9) or Input.is_key_pressed(KEY_KP_9):
 			atualiza_display('9')
 			
 		elif Input.is_key_pressed(KEY_PERIOD) or Input.is_key_pressed(KEY_KP_PERIOD):
@@ -121,11 +121,9 @@ func insere_ponto():
 	if ponto != 0 : return
 	ponto += 1
 	if resposta == '':
-		resposta += '0.'
-		atualiza_display(resposta)
+		atualiza_display('0.')
 	else :
-		resposta += '.'
-		atualiza_display(text + '.')
+		atualiza_display('.')
 		
 	
 func testa_resultado():
