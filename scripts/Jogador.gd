@@ -23,7 +23,6 @@ func _process(delta):
 	if not delay > 0:
 		if Input.is_key_pressed(KEY_MINUS) or Input.is_key_pressed(KEY_KP_SUBTRACT):
 			if (resposta == '' or resposta.length() == 0):
-				print("apertou o minus")
 				atualiza_display('-')
 				
 		elif Input.is_key_pressed(KEY_KP_0) or Input.is_key_pressed(KEY_0) :
