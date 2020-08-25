@@ -95,6 +95,7 @@ func gera_questao():
 		rng.randomize()
 		a = rng.randi_range(0, 9)
 		b = rng.randi_range(0, 9)
+		resultado = a + b
 		
 	if op == "-" :
 		print("subtração")
@@ -121,8 +122,7 @@ func gera_questao():
 		rng.randomize()
 		a = rng.randi_range(0, 9)
 		b = rng.randi_range(0, 9)
-	
-
+		resultado = a * b
 	
 	var format_string = "%s %s %s = "
 	question = format_string % [a, op, b]
