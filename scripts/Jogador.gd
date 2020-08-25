@@ -4,7 +4,7 @@ var delay := 0.0
 var screen_size  # Size of the game window.
 var text # Texto do Mostrador (display)
 var rng = RandomNumberGenerator.new()
-var diff = 2 # Dificuldade (de 1 à 3)
+var diff = 3 # Dificuldade (de 1 à 3)
 var resposta = "" # É a resposta que o usuário envia
 var ponto = 0 # Separador de decimais
 var question = "" # Pergunta
@@ -17,7 +17,6 @@ func _ready():
 	screen_size = get_viewport_rect().size	
 	gera_questao()
 
-
 func _process(delta):
 	
 	if not delay > 0:
@@ -29,8 +28,7 @@ func _process(delta):
 		elif Input.is_key_pressed(KEY_KP_0) or Input.is_key_pressed(KEY_0) :
 			if resposta != '':
 				atualiza_display('0')  # Para não mostrar um 0 à esquerde de outro 0
-				
-				
+
 		elif Input.is_key_pressed(KEY_1) or Input.is_key_pressed(KEY_KP_1):
 			atualiza_display('1')
 		elif Input.is_key_pressed(KEY_2) or Input.is_key_pressed(KEY_KP_2):
@@ -84,10 +82,16 @@ func atualiza_display(text_str: String):
 	print (resposta)
 
 func gera_questao():
+	op = gera_operador()
+	if op == "÷" : print("divisaum")
+	if op == "+" : print("adição")
+	if op == "-" : print("subtração")
+	if op == "x" : print("multiplicação")
+	
 	rng.randomize()
 	a = rng.randi_range(0, 9)
 	b = rng.randi_range(0, 9)
-	op = gera_operador()
+	
 	var format_string = "%s %s %s = "
 	question = format_string % [a, op, b]
 	atualiza_display(question)
