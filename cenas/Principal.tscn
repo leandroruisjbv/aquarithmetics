@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://cenas/Água.tscn" type="PackedScene" id=1]
+[ext_resource path="res://cenas/Jogador.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/Principal.gd" type="Script" id=3]
+
+[node name="Node2D" type="Area2D"]
+script = ExtResource( 3 )
+
+[node name="Jogador" parent="." instance=ExtResource( 2 )]
+
+[node name="Água" parent="." instance=ExtResource( 1 )]
+position = Vector2( 240, 160 )
+[connection signal="resposta_certa" from="Jogador" to="Água" method="_on_Jogador_resposta_certa"]
+[connection signal="resposta_errada" from="Jogador" to="Água" method="_on_Jogador_resposta_errada"]

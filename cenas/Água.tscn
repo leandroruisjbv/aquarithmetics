@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/background.jpg" type="Texture" id=1]
 [ext_resource path="res://assets/sprite_05.png" type="Texture" id=2]
@@ -15,7 +15,22 @@
 [ext_resource path="res://assets/sprite_00.png" type="Texture" id=13]
 [ext_resource path="res://assets/sprite_06.png" type="Texture" id=14]
 [ext_resource path="res://assets/sprite_01.png" type="Texture" id=15]
-[ext_resource path="res://scripts/Agua.gd" type="Script" id=16]
+[ext_resource path="res://scripts/Ondas.gd" type="Script" id=16]
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Area2D
+
+func _ready():
+	pass # Replace with function body.
+
+func _on_Jogador_resposta_certa():
+	$Ondas.processa_sinais(\"acertou\")
+	pass # Replace with function body.
+
+
+func _on_Jogador_resposta_errada():
+	pass # Replace with function body.
+"
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 285.181, 37.4374 )
@@ -31,8 +46,9 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 239.69, 63.6338 )
 
-[node name="Água" type="Node2D"]
+[node name="Agua" type="Area2D"]
 position = Vector2( 240, 80 )
+script = SubResource( 4 )
 
 [node name="background" type="Sprite" parent="."]
 position = Vector2( 0, 280 )
@@ -42,30 +58,27 @@ texture = ExtResource( 1 )
 gravity_scale = 0.0
 contacts_reported = 1
 contact_monitor = true
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Topo"]
-position = Vector2( 1.25995, -120.952 )
+position = Vector2( 1.25995, -181.952 )
 shape = SubResource( 1 )
 
-[node name="Água" type="KinematicBody2D" parent="."]
+[node name="Ondas" type="KinematicBody2D" parent="."]
+modulate = Color( 1, 1, 1, 0.827451 )
 position = Vector2( 0, 200 )
 script = ExtResource( 16 )
 __meta__ = {
 "_edit_group_": true
 }
-gravity = -400
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Água"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Ondas"]
 position = Vector2( 0, 240 )
 frames = SubResource( 2 )
 animation = "ondulações"
-frame = 10
+frame = 4
 playing = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Água"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ondas"]
 position = Vector2( -2.4548, -18.7529 )
 shape = SubResource( 3 )
-[connection signal="body_entered" from="Topo" to="Água" method="_on_Topo_body_entered"]
+[connection signal="body_entered" from="Topo" to="Ondas" method="_on_Topo_body_entered"]

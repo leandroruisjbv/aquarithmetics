@@ -1,7 +1,7 @@
-extends Area2D
+extends Node2D
 
 signal resposta_certa
-signal reposta_errada
+signal resposta_errada
 
 var delay := 0.0
 var screen_size  # Size of the game window.
@@ -83,7 +83,7 @@ func atualiza_display(text_str: String):
 	if  cont < 4 :
 		delay = 0.13
 		resposta += "" if text_str == question else text_str
-		$Label.text = question + resposta
+		$CanvasLayer/Label.text = question + resposta
 		
 	#print (resposta)
 
