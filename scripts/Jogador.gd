@@ -1,5 +1,8 @@
 extends Area2D
 
+signal resposta_certa
+signal reposta_errada
+
 var delay := 0.0
 var screen_size  # Size of the game window.
 var text # Texto do Mostrador (display).
@@ -13,8 +16,11 @@ var a = 0 # Lado esquerdo do operador.
 var b = 0 # Lado direito do operador.
 var op = '' # Operador da equação.
 
+
+
 # _ready e _process(delta), nessa ordem, são funções "core" do jogo
 func _ready():
+	hide()
 	screen_size = get_viewport_rect().size
 	gera_questao()
 
@@ -161,6 +167,9 @@ func insere_ponto():
 	else :
 		atualiza_display('.')
 		
+func start() :
+	show()
+		
 	
 func testa_resultado():
 	var format_string = "%s"
@@ -169,8 +178,10 @@ func testa_resultado():
 	
 	if resposta.to_int() == resultado :
 		print("acertou, abestado!")
+		emit_signal("resposta_certa")
 	else :
 		print("ah, deixa de ser burro, mano!")
+		emit_signal("resposta_errada")
 
 	resposta = ""
 	gera_questao()
