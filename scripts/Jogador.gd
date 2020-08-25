@@ -90,7 +90,7 @@ func gera_questao():
 		b = rng.randi_range(1, 9)
 		a = resultado * b
 		
-	if op == "+" :
+	if op == "+" : # falta considerar os graus de dificuldade
 		print("adição")
 		rng.randomize()
 		a = rng.randi_range(0, 9)
@@ -117,7 +117,7 @@ func gera_questao():
 			b = rng.randi_range(0, 99)
 			resultado = a - b
 	
-	if op == "x" :
+	if op == "x" : # falta considerar os graus de dificuldade
 		print("multiplicação")
 		rng.randomize()
 		a = rng.randi_range(0, 9)
@@ -166,6 +166,12 @@ func testa_resultado():
 	var format_string = "%s"
 	print(question + format_string % [resposta])
 	print("resultado deu " + format_string % [resultado])
+	
+	if resposta.to_int() == resultado :
+		print("acertou, abestado!")
+	else :
+		print("ah, deixa de ser burro, mano!")
+
 	resposta = ""
 	gera_questao()
 	ponto = 0
