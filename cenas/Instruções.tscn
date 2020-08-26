@@ -1,0 +1,21 @@
+[gd_scene format=2]
+
+[node name="Instruções" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+text = "Para jogar vc precisa inserir as respostas e apertar enter"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+margin_right = 12.0
+margin_bottom = 20.0
+text = "Voltar"
+__meta__ = {
+"_edit_use_anchors_": false
+}

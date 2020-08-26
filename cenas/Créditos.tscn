@@ -1,0 +1,23 @@
+[gd_scene format=2]
+
+[node name="Créditos" type="Node2D"]
+__meta__ = {
+"_editor_description_": "Esse software foi desenvolvido por Leandro"
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+margin_right = 12.0
+margin_bottom = 20.0
+text = "Voltar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
