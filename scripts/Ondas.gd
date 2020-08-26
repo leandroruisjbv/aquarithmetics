@@ -19,14 +19,15 @@ func _on_Topo_body_entered(body):
 	emit_signal("game_over")
 	
 func processa_sinais(sinal: String):
-	if sinal == ("acertou"):
-		velocity.y += 1
-		print("agua recebeu acerto")
-
-	if sinal == ("errou"):
-		position.y = position.y + 20
-		velocity.y -= 1
-		print("agua recebeu erro")
+	if not_stoped :
+		if sinal == ("acertou"):
+			velocity.y += 1
+			print("agua recebeu acerto")
+	
+		if sinal == ("errou"):
+			position.y = position.y + 20
+			velocity.y -= 1
+			print("agua recebeu erro")
 
 
 	
