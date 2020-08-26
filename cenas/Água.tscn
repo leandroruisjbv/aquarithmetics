@@ -20,6 +20,8 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends Area2D
 
+signal game_over
+
 func _ready():
 	pass # Replace with function body.
 
@@ -31,6 +33,10 @@ func _on_Jogador_resposta_certa():
 func _on_Jogador_resposta_errada():
 	$Ondas.processa_sinais(\"errou\")
 	pass # Replace with function body.
+	
+func game_over():
+	emit_signal(\"game_over\")
+	pass
 "
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -71,16 +77,16 @@ script = ExtResource( 16 )
 __meta__ = {
 "_edit_group_": true
 }
-speed = 2
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Ondas"]
 position = Vector2( 0, 240 )
 frames = SubResource( 3 )
 animation = "ondulações"
-frame = 3
+frame = 11
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ondas"]
 position = Vector2( -2.4548, -18.7529 )
 shape = SubResource( 4 )
 [connection signal="body_entered" from="Topo" to="Ondas" method="_on_Topo_body_entered"]
+[connection signal="game_over" from="Ondas" to="." method="game_over"]

@@ -16,8 +16,6 @@ var a = 0 # Lado esquerdo do operador.
 var b = 0 # Lado direito do operador.
 var op = '' # Operador da equação.
 
-
-
 # _ready e _process(delta), nessa ordem, são funções "core" do jogo
 func _ready():
 	hide()
@@ -169,6 +167,9 @@ func insere_ponto():
 		
 func start() :
 	show()
+	
+func game_over() :
+	$CanvasLayer/Label.hide()
 		
 	
 func testa_resultado():

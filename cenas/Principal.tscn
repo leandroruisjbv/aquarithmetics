@@ -13,3 +13,4 @@ script = ExtResource( 3 )
 position = Vector2( 240, 160 )
 [connection signal="resposta_certa" from="Jogador" to="Água" method="_on_Jogador_resposta_certa"]
 [connection signal="resposta_errada" from="Jogador" to="Água" method="_on_Jogador_resposta_errada"]
+[connection signal="game_over" from="Água" to="Jogador" method="game_over"]
