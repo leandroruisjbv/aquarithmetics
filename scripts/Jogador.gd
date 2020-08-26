@@ -67,8 +67,8 @@ func _process(delta):
 		delay -= delta
 		
 	if Input.is_action_just_pressed('ui_accept'):
-		#if resposta : testa_resultado()
-		testa_resultado()
+		if resposta : testa_resultado()
+		#testa_resultado()
 
 
 # As funções daqui pra baixo, são funções de apoio e devem estar em ordem afabética
@@ -167,6 +167,10 @@ func insere_ponto():
 		atualiza_display('.')
 		
 func start(nivel: String) :
+	if nivel == "easy" : diff = 1
+	elif nivel == "medium" : diff = 2
+	elif nivel == "hard" : diff = 3
+
 	not_stoped = true
 	placar = 0
 	gera_questao()

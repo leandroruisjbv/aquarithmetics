@@ -23,7 +23,7 @@ func _physics_process(delta):
 	if not_stoped :
 		velocity = move_and_slide(velocity, Vector2.UP)
 		velocity.y += speed * gravity * delta
-		print(velocity.y)
+		#print(velocity.y)
 
 
 func processa_sinais(sinal: String):
