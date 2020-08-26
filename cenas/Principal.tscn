@@ -5,8 +5,10 @@
 [ext_resource path="res://scripts/Principal.gd" type="Script" id=3]
 [ext_resource path="res://cenas/HUD.tscn" type="PackedScene" id=4]
 
-[node name="Node2D" type="Area2D"]
+[node name="Principal" type="Area2D"]
 script = ExtResource( 3 )
+
+[node name="HUD" parent="." instance=ExtResource( 4 )]
 
 [node name="Jogador" parent="." instance=ExtResource( 2 )]
 
@@ -16,8 +18,9 @@ position = Vector2( 240, 82 )
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
-
-[node name="HUD" parent="StartTimer" instance=ExtResource( 4 )]
+[connection signal="start_easy" from="HUD" to="." method="_on_HUD_start_easy"]
+[connection signal="start_hard" from="HUD" to="." method="_on_HUD_start_hard"]
+[connection signal="start_medium" from="HUD" to="." method="_on_HUD_start_medium"]
 [connection signal="resposta_certa" from="Jogador" to="Agua" method="_on_Jogador_resposta_certa"]
 [connection signal="resposta_errada" from="Jogador" to="Agua" method="_on_Jogador_resposta_errada"]
-[connection signal="game_over" from="Agua" to="Jogador" method="game_over"]
+[connection signal="game_over" from="Agua" to="." method="game_over"]

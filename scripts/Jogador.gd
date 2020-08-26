@@ -1,3 +1,4 @@
+# Script Jogador
 extends Node2D
 
 signal resposta_certa
@@ -85,10 +86,6 @@ func atualiza_display(text_str: String):
 		resposta += "" if text_str == question else text_str
 		$CanvasLayer/Label.text = question + resposta
 
-func game_over() :
-	$CanvasLayer/Label.hide()
-	not_stoped = false
-
 func gera_questao():
 	op = gera_operador()
 	if op == "÷" :
@@ -169,11 +166,20 @@ func insere_ponto():
 	else :
 		atualiza_display('.')
 		
-func start() :
+func start(nivel: String) :
+	not_stoped = true
 	placar = 0
 	gera_questao()
 	$CanvasLayer/Label.show()
 	show()
+
+func stop() :
+	not_stoped = false
+	# placar = 0
+	$CanvasLayer/Label.hide()
+	# gera_questao()
+	not_stoped = false
+	hide()
 
 func testa_resultado():
 	var format_string = "%s"

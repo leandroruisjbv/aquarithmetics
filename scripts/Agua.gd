@@ -1,19 +1,28 @@
+# Script Agua
 extends Area2D
 
+signal game_over
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	hide()
 	pass # Replace with function body.
 
 func start():
+	$Ondas.start()
 	show()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func stop():
+	$Ondas.stop()
+	hide()
+
+func _on_Jogador_resposta_certa():
+	$Ondas.processa_sinais("acertou")
+	pass # Replace with function body.
+
+func _on_Jogador_resposta_errada():
+	$Ondas.processa_sinais("errou")
+	pass # Replace with function body.
+	
+func _on_Topo_body_entered(body):
+	print("colidiu")
+	emit_signal("game_over")

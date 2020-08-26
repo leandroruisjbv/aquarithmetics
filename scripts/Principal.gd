@@ -1,3 +1,4 @@
+# Script Principal
 extends Node2D
 
 
@@ -8,18 +9,23 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Jogador.start()
-	$Agua.start()
 	pass # Replace with function body.
 
-func new_game():
-	$Jogador.start()
+func new_game(nivel: String):
+	$Jogador.start(nivel)
 	$Agua.start()
-	
-	
+
+func game_over():
+	$Jogador.stop()
+	$Agua.stop()
+	pass
 
 
+func _on_HUD_start_easy():
+	new_game("easy")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _on_HUD_start_hard():
+	new_game("hard")
+
+func _on_HUD_start_medium():
+	new_game("medium")
