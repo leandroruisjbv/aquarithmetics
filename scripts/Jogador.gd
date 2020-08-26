@@ -7,6 +7,7 @@ var not_stoped = true
 var delay := 0.0
 var screen_size  # Size of the game window.
 var text # Texto do Mostrador (display).
+var placar
 var rng = RandomNumberGenerator.new()
 var diff = 1 # Dificuldade (de 1 à 3).
 var resposta = "" # É a resposta que o usuário envia, podendo estar errada.
@@ -169,6 +170,7 @@ func insere_ponto():
 		atualiza_display('.')
 		
 func start() :
+	placar = 0
 	gera_questao()
 	$CanvasLayer/Label.show()
 	show()
