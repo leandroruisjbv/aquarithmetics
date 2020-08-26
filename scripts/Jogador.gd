@@ -8,7 +8,7 @@ var delay := 0.0
 var screen_size  # Size of the game window.
 var text # Texto do Mostrador (display).
 var rng = RandomNumberGenerator.new()
-var diff = 3 # Dificuldade (de 1 à 3).
+var diff = 1 # Dificuldade (de 1 à 3).
 var resposta = "" # É a resposta que o usuário envia, podendo estar errada.
 var resultado = 0 # É o resultado correto.
 var ponto = 0 # Separador de decimais.
