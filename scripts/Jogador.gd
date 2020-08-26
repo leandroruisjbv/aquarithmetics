@@ -3,6 +3,7 @@ extends Node2D
 signal resposta_certa
 signal resposta_errada
 
+var not_stoped = true
 var delay := 0.0
 var screen_size  # Size of the game window.
 var text # Texto do Mostrador (display).
@@ -23,7 +24,7 @@ func _ready():
 	gera_questao()
 
 func _process(delta):
-	
+	if !not_stoped : return
 	if not delay > 0:
 		if Input.is_key_pressed(KEY_MINUS) or Input.is_key_pressed(KEY_KP_SUBTRACT):
 			if (resposta == '' or resposta.length() == 0):
@@ -66,9 +67,9 @@ func _process(delta):
 		
 	if Input.is_action_just_pressed('ui_accept'):
 		testa_resultado()
-		
-# As funções daqui pra baixo, são funções de apoio e devem estar em ordem afabética
 
+
+# As funções daqui pra baixo, são funções de apoio e devem estar em ordem afabética
 func atualiza_display(text_str: String):
 	var cont = resposta.length()
 	if (resposta.left(1) == '-'):
@@ -82,8 +83,10 @@ func atualiza_display(text_str: String):
 		delay = 0.13
 		resposta += "" if text_str == question else text_str
 		$CanvasLayer/Label.text = question + resposta
-		
-	#print (resposta)
+
+func game_over() :
+	$CanvasLayer/Label.hide()
+	not_stoped = false
 
 func gera_questao():
 	op = gera_operador()
@@ -132,7 +135,7 @@ func gera_questao():
 	question = format_string % [a, op, b]
 	atualiza_display(question)
 	pass
-	
+
 func gera_operador():
 	var operador = 'a'
 
@@ -167,21 +170,15 @@ func insere_ponto():
 		
 func start() :
 	show()
-	
-func game_over() :
-	$CanvasLayer/Label.hide()
-		
-	
+
 func testa_resultado():
 	var format_string = "%s"
 	print(question + format_string % [resposta])
 	print("resultado deu " + format_string % [resultado])
 	
 	if resposta.to_int() == resultado :
-		print("acertou, abestado!")
 		emit_signal("resposta_certa")
 	else :
-		print("ah, deixa de ser burro, mano!")
 		emit_signal("resposta_errada")
 
 	resposta = ""
