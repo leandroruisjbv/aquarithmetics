@@ -10,7 +10,10 @@ var velocity = Vector2()
 var not_stoped = false
 
 func start():
+	velocity = Vector2()
+	velocity.y = 0.0
 	not_stoped = true
+	position.y = 700
 
 func stop():
 	not_stoped = false

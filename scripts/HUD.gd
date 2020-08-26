@@ -1,8 +1,10 @@
+# Script HUD
 extends CanvasLayer
 
 signal start_easy
 signal start_medium
 signal start_hard
+signal quit_game
 
 
 # Called when the node enters the scene tree for the first time.
@@ -10,9 +12,9 @@ func _ready():
 	$QuitGame.hide()
 	pass # Replace with function body.
 
-func show_message(text):
-	$Message.text = text
-	$Message.show()
+func show_message(text: String):
+	$Mensagens.text = text
+	$Mensagens.show()
 	$MessageTimer.start()
 
 
@@ -50,3 +52,6 @@ func _on_Medium_pressed():
 func _on_Hard_pressed():
 	emit_signal("start_hard")
 	apagar_luzes()
+
+func _on_QuitGame_pressed():
+	emit_signal("quit_game")

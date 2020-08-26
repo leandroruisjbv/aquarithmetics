@@ -63,7 +63,7 @@ __meta__ = {
 position = Vector2( 0, 240 )
 frames = SubResource( 2 )
 animation = "ondulações"
-frame = 8
+frame = 11
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ondas"]

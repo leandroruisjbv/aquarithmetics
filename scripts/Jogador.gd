@@ -4,11 +4,11 @@ extends Node2D
 signal resposta_certa
 signal resposta_errada
 
-var not_stoped = true
+var not_stoped = false
 var delay := 0.0
 var screen_size  # Size of the game window.
 var text # Texto do Mostrador (display).
-var placar
+var placar = 0
 var rng = RandomNumberGenerator.new()
 var diff = 1 # Dificuldade (de 1 à 3).
 var resposta = "" # É a resposta que o usuário envia, podendo estar errada.
@@ -21,9 +21,8 @@ var op = '' # Operador da equação.
 
 # _ready e _process(delta), nessa ordem, são funções "core" do jogo
 func _ready():
-	hide()
-	$CanvasLayer/Label.hide()
 	screen_size = get_viewport_rect().size
+	stop()
 
 func _process(delta):
 	if !not_stoped : return
@@ -68,6 +67,7 @@ func _process(delta):
 		delay -= delta
 		
 	if Input.is_action_just_pressed('ui_accept'):
+		#if resposta : testa_resultado()
 		testa_resultado()
 
 
@@ -171,14 +171,16 @@ func start(nivel: String) :
 	placar = 0
 	gera_questao()
 	$CanvasLayer/Label.show()
+	$CanvasLayer/Placar.text = "0000"
+	$CanvasLayer/Placar.show()
 	show()
 
 func stop() :
 	not_stoped = false
 	# placar = 0
-	$CanvasLayer/Label.hide()
 	# gera_questao()
-	not_stoped = false
+	$CanvasLayer/Label.hide()
+	$CanvasLayer/Placar.hide()
 	hide()
 
 func testa_resultado():
@@ -188,6 +190,8 @@ func testa_resultado():
 	
 	if resposta.to_int() == resultado :
 		emit_signal("resposta_certa")
+		placar += 10
+		$CanvasLayer/Placar.text = ("%04d" % [placar])
 	else :
 		emit_signal("resposta_errada")
 

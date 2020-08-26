@@ -113,3 +113,4 @@ wait_time = 2.0
 [connection signal="pressed" from="Easy" to="." method="_on_Easy_pressed"]
 [connection signal="pressed" from="Medium" to="." method="_on_Medium_pressed"]
 [connection signal="pressed" from="Hard" to="." method="_on_Hard_pressed"]
+[connection signal="pressed" from="QuitGame" to="." method="_on_QuitGame_pressed"]

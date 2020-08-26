@@ -2,6 +2,8 @@
 extends Area2D
 
 signal game_over
+signal certo
+signal errado
 
 func _ready():
 	hide()
@@ -13,15 +15,16 @@ func start():
 
 func stop():
 	$Ondas.stop()
+	yield(get_tree().create_timer(1), "timeout")
 	hide()
 
 func _on_Jogador_resposta_certa():
 	$Ondas.processa_sinais("acertou")
-	pass # Replace with function body.
+	emit_signal("certo")
 
 func _on_Jogador_resposta_errada():
 	$Ondas.processa_sinais("errou")
-	pass # Replace with function body.
+	emit_signal("errado")
 	
 func _on_Topo_body_entered(body):
 	print("colidiu")

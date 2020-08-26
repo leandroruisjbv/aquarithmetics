@@ -18,9 +18,12 @@ position = Vector2( 240, 82 )
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+[connection signal="quit_game" from="HUD" to="." method="_on_HUD_quit_game"]
 [connection signal="start_easy" from="HUD" to="." method="_on_HUD_start_easy"]
 [connection signal="start_hard" from="HUD" to="." method="_on_HUD_start_hard"]
 [connection signal="start_medium" from="HUD" to="." method="_on_HUD_start_medium"]
 [connection signal="resposta_certa" from="Jogador" to="Agua" method="_on_Jogador_resposta_certa"]
 [connection signal="resposta_errada" from="Jogador" to="Agua" method="_on_Jogador_resposta_errada"]
+[connection signal="certo" from="Agua" to="." method="_on_Agua_certo"]
+[connection signal="errado" from="Agua" to="." method="_on_Agua_errado"]
 [connection signal="game_over" from="Agua" to="." method="game_over"]
