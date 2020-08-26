@@ -9,8 +9,8 @@ script = ExtResource( 3 )
 
 [node name="Jogador" parent="." instance=ExtResource( 2 )]
 
-[node name="Água" parent="." instance=ExtResource( 1 )]
-position = Vector2( 240, 160 )
-[connection signal="resposta_certa" from="Jogador" to="Água" method="_on_Jogador_resposta_certa"]
-[connection signal="resposta_errada" from="Jogador" to="Água" method="_on_Jogador_resposta_errada"]
-[connection signal="game_over" from="Água" to="Jogador" method="game_over"]
+[node name="Agua" parent="." instance=ExtResource( 1 )]
+position = Vector2( 240, 82 )
+[connection signal="resposta_certa" from="Jogador" to="Agua" method="_on_Jogador_resposta_certa"]
+[connection signal="resposta_errada" from="Jogador" to="Agua" method="_on_Jogador_resposta_errada"]
+[connection signal="game_over" from="Agua" to="Jogador" method="game_over"]

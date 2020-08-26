@@ -20,8 +20,8 @@ var op = '' # Operador da equação.
 # _ready e _process(delta), nessa ordem, são funções "core" do jogo
 func _ready():
 	hide()
+	$CanvasLayer/Label.hide()
 	screen_size = get_viewport_rect().size
-	gera_questao()
 
 func _process(delta):
 	if !not_stoped : return
@@ -169,6 +169,8 @@ func insere_ponto():
 		atualiza_display('.')
 		
 func start() :
+	gera_questao()
+	$CanvasLayer/Label.show()
 	show()
 
 func testa_resultado():

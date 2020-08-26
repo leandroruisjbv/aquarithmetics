@@ -5,7 +5,10 @@ signal game_over
 export (float) var speed = 0.3 # Muito carinho com esse valor
 export (int) var gravity = -1
 var velocity = Vector2()
-var not_stoped = true
+var not_stoped = false
+
+func start():
+	not_stoped = true
 
 func _physics_process(delta):
 	if not_stoped :

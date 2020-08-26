@@ -23,12 +23,16 @@ script/source = "extends Area2D
 signal game_over
 
 func _ready():
+	hide()
 	pass # Replace with function body.
+
+func start():
+	$Ondas.start()
+	show()
 
 func _on_Jogador_resposta_certa():
 	$Ondas.processa_sinais(\"acertou\")
 	pass # Replace with function body.
-
 
 func _on_Jogador_resposta_errada():
 	$Ondas.processa_sinais(\"errou\")
@@ -67,7 +71,7 @@ contacts_reported = 1
 contact_monitor = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Topo"]
-position = Vector2( 1.25995, -218.952 )
+position = Vector2( 1.25995, -153.952 )
 shape = SubResource( 2 )
 
 [node name="Ondas" type="KinematicBody2D" parent="."]
@@ -82,7 +86,7 @@ __meta__ = {
 position = Vector2( 0, 240 )
 frames = SubResource( 3 )
 animation = "ondulações"
-frame = 3
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ondas"]
