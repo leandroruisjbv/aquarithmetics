@@ -1,23 +1,27 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
 
-[node name="Créditos" type="Node2D"]
-__meta__ = {
-"_editor_description_": "Esse software foi desenvolvido por Leandro"
-}
+[ext_resource path="res://scripts/Creditos.gd" type="Script" id=1]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Créditos" type="CanvasLayer"]
+script = ExtResource( 1 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 37.0
+margin_top = 49.0
+margin_right = 150.0
+margin_bottom = 124.0
+text = "Esse jogo foi criado por Leandro"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="CanvasLayer"]
-margin_right = 12.0
-margin_bottom = 20.0
+[node name="Button" type="Button" parent="."]
+margin_left = 56.5611
+margin_top = 11.2373
+margin_right = 105.561
+margin_bottom = 31.2373
 text = "Voltar"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

@@ -83,3 +83,26 @@ func ofensa(errou : bool):
 	
 	return msg
 	pass
+
+
+func _on_Crditos_voltar():
+	$HUD.acender_luzes()
+	pass # Replace with function body.
+
+func _on_Instrues_voltar():
+	$HUD.acender_luzes()
+	pass # Replace with function body.
+
+
+func _on_HUD_about():
+	$"Créditos".mostrar_creditos()
+	$HUD.apagar_luzes()
+	$HUD/QuitGame.hide()
+	pass # Replace with function body.
+
+
+func _on_HUD_instructions():
+	$"Instruções".mostrar_instrucoes()
+	$HUD.apagar_luzes()
+	$HUD/QuitGame.hide()
+	pass # Replace with function body.

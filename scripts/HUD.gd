@@ -6,6 +6,9 @@ signal start_medium
 signal start_hard
 signal quit_game
 
+signal about
+signal instructions
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -55,3 +58,11 @@ func _on_Hard_pressed():
 
 func _on_QuitGame_pressed():
 	emit_signal("quit_game")
+
+
+func _on_Instructions_pressed():
+	emit_signal("instructions")
+
+
+func _on_About_pressed():
+	emit_signal("about")
