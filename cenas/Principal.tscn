@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://cenas/Água.tscn" type="PackedScene" id=1]
+[ext_resource path="res://cenas/Agua.tscn" type="PackedScene" id=1]
 [ext_resource path="res://cenas/Jogador.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/Principal.gd" type="Script" id=3]
 [ext_resource path="res://cenas/HUD.tscn" type="PackedScene" id=4]
-[ext_resource path="res://cenas/Instruções.tscn" type="PackedScene" id=5]
-[ext_resource path="res://cenas/Créditos.tscn" type="PackedScene" id=6]
+[ext_resource path="res://cenas/Instrucoes.tscn" type="PackedScene" id=5]
+[ext_resource path="res://cenas/Creditos.tscn" type="PackedScene" id=6]
 
 [node name="Principal" type="Area2D"]
 script = ExtResource( 3 )
@@ -21,9 +21,9 @@ position = Vector2( 240, 82 )
 wait_time = 2.0
 one_shot = true
 
-[node name="Créditos" parent="." instance=ExtResource( 6 )]
+[node name="Creditos" parent="." instance=ExtResource( 6 )]
 
-[node name="Instruções" parent="." instance=ExtResource( 5 )]
+[node name="Instrucoes" parent="." instance=ExtResource( 5 )]
 [connection signal="about" from="HUD" to="." method="_on_HUD_about"]
 [connection signal="instructions" from="HUD" to="." method="_on_HUD_instructions"]
 [connection signal="quit_game" from="HUD" to="." method="_on_HUD_quit_game"]
@@ -35,5 +35,5 @@ one_shot = true
 [connection signal="certo" from="Agua" to="." method="_on_Agua_certo"]
 [connection signal="errado" from="Agua" to="." method="_on_Agua_errado"]
 [connection signal="game_over" from="Agua" to="." method="game_over"]
-[connection signal="voltar" from="Créditos" to="." method="_on_Crditos_voltar"]
-[connection signal="voltar" from="Instruções" to="." method="_on_Instrues_voltar"]
+[connection signal="voltar" from="Creditos" to="." method="_on_Crditos_voltar"]
+[connection signal="voltar" from="Instrucoes" to="." method="_on_Instrues_voltar"]

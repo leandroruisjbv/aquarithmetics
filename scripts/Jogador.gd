@@ -35,6 +35,7 @@ func _process(delta):
 			if resposta != '0':
 				atualiza_display('0')  # Para não mostrar um 0 à esquerde de outro 0
 
+			
 		elif Input.is_key_pressed(KEY_1) or Input.is_key_pressed(KEY_KP_1):
 			atualiza_display('1')
 		elif Input.is_key_pressed(KEY_2) or Input.is_key_pressed(KEY_KP_2):
@@ -157,7 +158,7 @@ func gera_operador():
 		else : operador = '-'
 	#print (operador)
 	return operador
-	
+
 func insere_ponto():
 	if ponto != 0 : return
 	ponto += 1
@@ -177,12 +178,14 @@ func start(nivel: String) :
 	$CanvasLayer/Label.show()
 	$CanvasLayer/Placar.text = "0000"
 	$CanvasLayer/Placar.show()
+	$CanvasLayer/Teclado.mostar_teclado()
 	show()
 
 func stop() :
 	not_stoped = false
 	# placar = 0
 	# gera_questao()
+	$CanvasLayer/Teclado.esconder_teclado()
 	$CanvasLayer/Label.hide()
 	$CanvasLayer/Placar.hide()
 	hide()
@@ -205,3 +208,57 @@ func testa_resultado():
 	pass
 	
 
+func _on_Button1_pressed():
+		atualiza_display('1')
+		
+func _on_Button2_pressed():
+	atualiza_display('2')
+	pass # Replace with function body.
+
+func _on_Button3_pressed():
+	atualiza_display('3')
+	pass # Replace with function body.
+
+func _on_Button4_pressed():
+	atualiza_display('4')
+	pass # Replace with function body.
+
+func _on_Button5_pressed():
+	atualiza_display('5')
+	pass # Replace with function body.
+
+func _on_Button6_pressed():
+	atualiza_display('6')
+	pass # Replace with function body.
+
+func _on_Button7_pressed():
+	atualiza_display('7')
+	pass # Replace with function body.
+
+func _on_Button8_pressed():
+	atualiza_display('8')
+	pass # Replace with function body.
+
+func _on_Button9_pressed():
+	atualiza_display('9')
+	pass # Replace with function body.
+	
+func _on_Button0_pressed():
+	if resposta != '0':
+		atualiza_display('0')  # Para não mostrar um 0 à esquerde de outro 0
+
+
+func _on_ButtonMinus_pressed():
+	if (resposta == '' or resposta.length() == 0):
+		atualiza_display('-')
+
+func _on_ButtonDot_pressed():
+	insere_ponto()
+
+func _on_ButtonClear_pressed():
+	resposta = ""
+	atualiza_display(question)
+	ponto = 0
+
+func _on_ButtonSubmit_pressed():
+	if resposta : testa_resultado()
