@@ -55,10 +55,13 @@ func _on_Agua_certo():
 	$HUD/Mensagens.hide()
 
 func _on_Agua_errado():
+	var cor = get_node("HUD/Mensagens").get_color("font_color")
+	get_node("HUD/Mensagens").add_color_override("font_color", Color.red)
 	combo = 0
 	$HUD.show_message(motiva(false))
 	yield(get_tree().create_timer(1), "timeout")
 	$HUD/Mensagens.hide()
+	get_node("HUD/Mensagens").add_color_override("font_color", cor)
 
 func motiva(acertou : bool):
 	var fraco = rng.randi_range(0, 3) # Mero feedback.
@@ -82,7 +85,8 @@ func motiva(acertou : bool):
 	array[9] = "Genial!!!"
 	var msg = ""
 	
-	if !acertou : msg = vetor_erro[errada]
+	if !acertou :
+		msg = vetor_erro[errada]
 	else : # Combos do lol
 		if combo < 3 : msg = "%s" % array[fraco]
 		elif combo > 6 : msg = "%s" % array[genio]
