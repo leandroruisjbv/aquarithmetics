@@ -47,13 +47,26 @@ contacts_reported = 1
 contact_monitor = true
 can_sleep = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Topo"]
-position = Vector2( 1.25995, -153.952 )
+[node name="CollisionTopo" type="CollisionShape2D" parent="Topo"]
+position = Vector2( -15.2537, -117.76 )
+shape = SubResource( 1 )
+
+[node name="GambiDoBigu" type="RigidBody2D" parent="."]
+collision_layer = 3
+mode = 1
+gravity_scale = 0.0
+contacts_reported = 1
+contact_monitor = true
+can_sleep = false
+
+[node name="CollisionTopo" type="CollisionShape2D" parent="GambiDoBigu"]
+position = Vector2( -15.2537, -194.004 )
 shape = SubResource( 1 )
 
 [node name="Ondas" type="KinematicBody2D" parent="."]
 modulate = Color( 1, 1, 1, 0.827451 )
-position = Vector2( 0, 200 )
+position = Vector2( 0, 2.59167 )
+collision_layer = 3
 script = ExtResource( 16 )
 __meta__ = {
 "_edit_group_": true
@@ -63,10 +76,11 @@ __meta__ = {
 position = Vector2( 0, 240 )
 frames = SubResource( 2 )
 animation = "ondulações"
-frame = 3
+frame = 11
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ondas"]
 position = Vector2( -2.4548, -18.7529 )
 shape = SubResource( 3 )
 [connection signal="body_entered" from="Topo" to="." method="_on_Topo_body_entered"]
+[connection signal="body_entered" from="GambiDoBigu" to="." method="_on_Topo_body_entered"]

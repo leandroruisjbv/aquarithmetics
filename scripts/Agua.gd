@@ -12,6 +12,8 @@ func _ready():
 func start():
 	$Ondas.start()
 	show()
+	$Topo/CollisionTopo.disabled = false
+	get_node("Topo/CollisionTopo").disabled= false
 
 func stop():
 	$Ondas.stop()

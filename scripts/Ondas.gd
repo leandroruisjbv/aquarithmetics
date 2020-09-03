@@ -4,7 +4,7 @@ extends KinematicBody2D
 
 signal colidiu
 
-export (float) var speed = 0.3 # Muito carinho com esse valor
+export (float) var speed = 0.23 # Muito carinho com esse valor
 export (int) var gravity = -1
 var velocity = Vector2()
 var not_stoped = false
@@ -18,6 +18,7 @@ func start():
 func stop():
 	not_stoped = false
 	velocity.y = 0
+	
 
 func _physics_process(delta):
 	if not_stoped :
@@ -29,7 +30,7 @@ func _physics_process(delta):
 func processa_sinais(sinal: String):
 	if not_stoped :
 		if sinal == ("acertou"):
-			position.y = position.y + 20
+			position.y = 0 if position.y >= 700 else position.y + 80
 			print("agua recebeu acerto")
 
 		if sinal == ("errou"):

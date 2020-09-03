@@ -50,32 +50,39 @@ func _on_HUD_quit_game():
 
 func _on_Agua_certo():
 	combo += 1
-	$HUD.show_message(ofensa(false))
+	$HUD.show_message(motiva(true))
 	yield(get_tree().create_timer(1), "timeout")
 	$HUD/Mensagens.hide()
 
 func _on_Agua_errado():
 	combo = 0
-	$HUD.show_message(ofensa(true))
+	$HUD.show_message(motiva(false))
 	yield(get_tree().create_timer(1), "timeout")
 	$HUD/Mensagens.hide()
 
-func ofensa(errou : bool):
+func motiva(acertou : bool):
 	var fraco = rng.randi_range(0, 3) # Mero feedback.
 	var regular = rng.randi_range(3, 6) # Um certo desdém...
 	var genio = rng.randi_range(6, 9) # Um belo elogio!
 	
+	var errada = rng.randi_range(0, 2) # Um belo elogio!
+	
 	print(combo)
-	var array = ["Acertou!", "Isso", "Certinho", "correto", 4, 5, 6, 7, 8, 9]
-	array[4] = "Ah, acertou de novo?!"
-	array[5] = "Ui, acertante :p"
+	var vetor_erro = [0,1,2]
+	vetor_erro[0] = "Ops! Não foi dessa vez..."
+	vetor_erro[1] = "Não desista, tente de novo"
+	vetor_erro[2] = "Ah, que peninha. Continue tentando"
+	
+	var array = ["Acertou!", "Isso ;)", "Certinho", "Correto", 4, 5, 6, 7, 8, 9]
+	array[4] = "Olha, acertou de novo!"
+	array[5] = "Muito bom! :p"
 	array[6] = "E o placar tá aumentando..."
-	array[7] = "Impossível, acertou mais uma!"
+	array[7] = "Incrível, acertou mais uma!"
 	array[8] = "Ah, mulék!!!"
 	array[9] = "Genial!!!"
 	var msg = ""
 	
-	if errou : msg = "Não seja burro, besta!"
+	if !acertou : msg = vetor_erro[errada]
 	else : # Combos do lol
 		if combo < 3 : msg = "%s" % array[fraco]
 		elif combo > 6 : msg = "%s" % array[genio]
@@ -95,14 +102,14 @@ func _on_Instrues_voltar():
 
 
 func _on_HUD_about():
-	$"Créditos".mostrar_creditos()
+	$"Creditos".mostrar_creditos()
 	$HUD.apagar_luzes()
 	$HUD/QuitGame.hide()
 	pass # Replace with function body.
 
 
 func _on_HUD_instructions():
-	$"Instruções".mostrar_instrucoes()
+	$"Instrucoes".mostrar_instrucoes()
 	$HUD.apagar_luzes()
 	$HUD/QuitGame.hide()
 	pass # Replace with function body.
