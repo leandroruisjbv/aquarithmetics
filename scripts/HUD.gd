@@ -5,6 +5,7 @@ signal start_easy
 signal start_medium
 signal start_hard
 signal quit_game
+signal close_app
 
 signal about
 signal instructions
@@ -31,6 +32,7 @@ func apagar_luzes():
 	$Instructions.hide()
 	
 	$QuitGame.show()
+	$CloseApp.hide()
 	
 func acender_luzes():
 	$Mensagens.show()
@@ -42,6 +44,7 @@ func acender_luzes():
 	$Instructions.show()
 	
 	$QuitGame.hide()
+	$CloseApp.show()
 
 
 func _on_Easy_pressed():
@@ -66,3 +69,8 @@ func _on_Instructions_pressed():
 
 func _on_About_pressed():
 	emit_signal("about")
+
+
+func _on_CloseApp_pressed():
+	emit_signal("close_app")
+	pass # Replace with function body.

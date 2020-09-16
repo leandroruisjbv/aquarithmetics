@@ -25,6 +25,7 @@ one_shot = true
 
 [node name="Instrucoes" parent="." instance=ExtResource( 5 )]
 [connection signal="about" from="HUD" to="." method="_on_HUD_about"]
+[connection signal="close_app" from="HUD" to="." method="_on_HUD_close_app"]
 [connection signal="instructions" from="HUD" to="." method="_on_HUD_instructions"]
 [connection signal="quit_game" from="HUD" to="." method="_on_HUD_quit_game"]
 [connection signal="start_easy" from="HUD" to="." method="_on_HUD_start_easy"]

@@ -24,12 +24,17 @@ func game_over():
 	$HUD.acender_luzes()
 	pass
 	
+func close_app():
+	get_tree().quit()
+	pass
+	
 func quit_game():
 	$Jogador.stop()
 	$Agua.stop()
 	$HUD/Mensagens.text = "Aquarithmetics"
 	$HUD/Mensagens.show()
 	$HUD.acender_luzes()
+	#close_app()
 	
 func certo_errado(txt: String):
 	pass
@@ -116,4 +121,9 @@ func _on_HUD_instructions():
 	$"Instrucoes".mostrar_instrucoes()
 	$HUD.apagar_luzes()
 	$HUD/QuitGame.hide()
+	pass # Replace with function body.
+
+
+func _on_HUD_close_app():
+	close_app()
 	pass # Replace with function body.
