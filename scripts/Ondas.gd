@@ -30,7 +30,8 @@ func _physics_process(delta):
 func processa_sinais(sinal: String):
 	if not_stoped :
 		if sinal == ("acertou"):
-			position.y = 700 if position.y >= 700 else position.y + 80
+			var diferenca = 700 - position.y
+			position.y = position.y + 80 if diferenca >= 80 else position.y + diferenca
 			print("agua recebeu acerto")
 
 		if sinal == ("errou"):
