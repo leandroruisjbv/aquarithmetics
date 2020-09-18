@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://cenas/Agua.tscn" type="PackedScene" id=1]
 [ext_resource path="res://cenas/Jogador.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://cenas/HUD.tscn" type="PackedScene" id=4]
 [ext_resource path="res://cenas/Instrucoes.tscn" type="PackedScene" id=5]
 [ext_resource path="res://cenas/Creditos.tscn" type="PackedScene" id=6]
+[ext_resource path="res://cenas/GameOver.tscn" type="PackedScene" id=7]
 
 [node name="Principal" type="Area2D"]
 script = ExtResource( 3 )
@@ -24,6 +25,8 @@ one_shot = true
 [node name="Creditos" parent="." instance=ExtResource( 6 )]
 
 [node name="Instrucoes" parent="." instance=ExtResource( 5 )]
+
+[node name="GameOver" parent="." instance=ExtResource( 7 )]
 [connection signal="about" from="HUD" to="." method="_on_HUD_about"]
 [connection signal="close_app" from="HUD" to="." method="_on_HUD_close_app"]
 [connection signal="instructions" from="HUD" to="." method="_on_HUD_instructions"]

@@ -1,13 +1,20 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://scripts/HUD.gd" type="Script" id=2]
+[ext_resource path="res://scripts/GameOver.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
 font_data = ExtResource( 1 )
 
-[node name="HUD" type="CanvasLayer"]
+[sub_resource type="DynamicFontData" id=2]
+font_path = "res://assets/SuperMario256.ttf"
+
+[sub_resource type="DynamicFont" id=3]
+size = 56
+font_data = SubResource( 2 )
+
+[node name="GameOver" type="CanvasLayer"]
 script = ExtResource( 2 )
 
 [node name="Mensagens" type="Label" parent="."]
@@ -17,37 +24,9 @@ margin_top = 139.796
 margin_right = 0.224548
 margin_bottom = 282.796
 custom_fonts/font = SubResource( 1 )
-text = "Aquarithmetics"
+text = "Game Over"
 align = 1
 autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="About" type="Button" parent="."]
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = 15.8878
-margin_top = 226.897
-margin_right = -14.1122
-margin_bottom = 281.897
-custom_fonts/font = SubResource( 1 )
-text = "Créditos"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Instructions" type="Button" parent="."]
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = 16.1122
-margin_top = 159.132
-margin_right = -13.8877
-margin_bottom = 214.132
-custom_fonts/font = SubResource( 1 )
-text = "Como jogar?"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -56,11 +35,24 @@ __meta__ = {
 wait_time = 2.0
 
 [node name="Label" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 14.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -62.0
+margin_top = -28.0
+margin_right = 62.0
+margin_bottom = 28.0
+custom_fonts/font = SubResource( 3 )
 text = "0000"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="About" to="." method="_on_About_pressed"]
-[connection signal="pressed" from="Instructions" to="." method="_on_Instructions_pressed"]
+
+[node name="Button" type="Button" parent="."]
+margin_right = 12.0
+margin_bottom = 20.0
+text = "Voltar"
+__meta__ = {
+"_edit_use_anchors_": false
+}

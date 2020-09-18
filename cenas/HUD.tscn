@@ -138,5 +138,5 @@ wait_time = 2.0
 [connection signal="pressed" from="About" to="." method="_on_About_pressed"]
 [connection signal="pressed" from="Instructions" to="." method="_on_Instructions_pressed"]
 [connection signal="pressed" from="QuitGame" to="." method="_on_QuitGame_pressed"]
-[connection signal="pressed" from="CloseApp" to="." method="_on_CloseApp_pressed"]
 [connection signal="pressed" from="CloseApp" to="." method="_on_QuitGame_pressed"]
+[connection signal="pressed" from="CloseApp" to="." method="_on_CloseApp_pressed"]
