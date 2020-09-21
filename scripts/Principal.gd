@@ -4,6 +4,11 @@ extends Node2D
 var rng = RandomNumberGenerator.new()
 var combo = 0
 
+func _process(delta):
+	$Agua.diff = $Jogador.diff
+	$Agua.set_background()
+	pass
+
 func _ready():
 	pass # Replace with function body.
 
