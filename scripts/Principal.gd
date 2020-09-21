@@ -18,10 +18,9 @@ func game_over():
 	$HUD.show_message("Game Over")
 	$StartTimer.start()
 	yield($StartTimer, "timeout")
-	$HUD/Mensagens.text = "Aquarithmetics"
-	$HUD/Mensagens.show()
-	yield(get_tree().create_timer(1), "timeout")
-	$HUD.acender_luzes()
+	var placar = ("%04d" % [$Jogador.placar])
+	
+	$GameOver.acender_luzes(placar)
 	pass
 	
 func close_app():
@@ -33,6 +32,7 @@ func quit_game():
 	$Agua.stop()
 	$HUD/Mensagens.text = "Aquarithmetics"
 	$HUD/Mensagens.show()
+	$GameOver.apagar_luzes()
 	$HUD.acender_luzes()
 	#close_app()
 	
