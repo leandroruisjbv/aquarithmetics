@@ -105,23 +105,24 @@ func gera_questao():
 		
 	if op == "-" :
 		print("subtração")
-		if diff == 1 : # Fácil (Não pode dar resultado negativo)
+		if diff <= 3 : # Fácil (Não pode dar resultado negativo)
 			rng.randomize()
 			resultado = rng.randi_range(0, 9)
 			b = rng.randi_range(1, 9)
 			a = resultado + b
-
-		elif diff == 2 : # Médio (maior alcance e possibilidade de resultado negativo)
-			rng.randomize()
-			a = rng.randi_range(1, 99)
-			b = rng.randi_range(0, 9)
-			resultado = a - b
-			
-		else : # Hard (alcance ainda maior)
+						
+		elif diff >= 5: # Hard (alcance ainda maior)
 			rng.randomize()
 			a = rng.randi_range(0, 99)
 			b = rng.randi_range(0, 99)
 			resultado = a - b
+
+		else : # Médio (maior alcance e possibilidade de resultado negativo)
+			rng.randomize()
+			a = rng.randi_range(1, 99)
+			b = rng.randi_range(0, 9)
+			resultado = a - b
+
 	
 	if op == "x" : # falta considerar os graus de dificuldade
 		print("multiplicação")
@@ -137,26 +138,19 @@ func gera_questao():
 
 func gera_operador():
 	var operador = 'a'
+	var c = rng.randi_range(1, diff)
 
-	if diff == 3 : # Hard, difícil (chances iguais pra cada operação)
-		var c = rng.randi_range(0, 3)
-		if c == 0: operador = '+'
-		if c == 1: operador = '-'
-		if c == 2: operador = 'x'
-		if c == 3: operador = '÷'
-		
-	if diff == 2 : # Nível médio (duas adições, duas subtrações e uma multiplicação)
-		var c = rng.randi_range(0, 4)
-		if c < 2: operador = '+'
-		elif c == 4: operador = 'x'
-		else : operador = '-'
+	if c == 1: operador = '+'
+	if c == 2: operador = '+'
+	if c == 3: operador = '-'
+	if c == 4: operador = '-'
+	if c == 5: operador = 'x'
+	if c == 6: operador = 'x'
+	if c == 7: operador = '÷'
+	if c == 8: operador = '÷'
+	if c == 9: operador = '÷'
+	pass
 
-
-	if diff == 1 : # Easy, fácil (três chances para adição e duas para subtração)
-		var c = rng.randi_range(0, 4) 
-		if c < 3: operador = '+'
-		else : operador = '-'
-	#print (operador)
 	return operador
 
 func insere_ponto():
@@ -169,8 +163,8 @@ func insere_ponto():
 		
 func start(nivel: String) :
 	if nivel == "easy" : diff = 1
-	elif nivel == "medium" : diff = 2
-	elif nivel == "hard" : diff = 3
+	elif nivel == "medium" : diff = 4
+	elif nivel == "hard" : diff = 7
 
 	not_stoped = true
 	placar = 0

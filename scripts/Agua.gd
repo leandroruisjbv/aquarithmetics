@@ -19,12 +19,12 @@ func start():
 	#$background.texture = load("res://assets/bg_hard.jpg")
 	
 func set_background():
-	if (diff == 1) :
+	if (diff < 4) :
 		$background.texture = load("res://assets/bg_easy.jpg")
-	elif (diff == 2) :
-		$background.texture = load("res://assets/bg_medium.png")
-	else: 
+	elif (diff > 6) :
 		$background.texture = load("res://assets/bg_hard.jpg")
+	else: 
+		$background.texture = load("res://assets/bg_medium.jpg")
 	
 	
 
