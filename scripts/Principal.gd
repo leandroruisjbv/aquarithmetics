@@ -45,7 +45,6 @@ func certo_errado(txt: String):
 	pass
 
 
-
 func _on_HUD_start_easy():
 	new_game("easy")
 
@@ -57,12 +56,17 @@ func _on_HUD_start_medium():
 
 func _on_HUD_quit_game():
 	quit_game()
+	
 
 func _on_Agua_certo():
 	combo += 1
+	if (combo % 4 == 0) : $Jogador.diff += 1
+	if ($Jogador.placar % 100 == 0) : $Jogador.diff += 1
+
 	$HUD.show_message(motiva(true))
 	yield(get_tree().create_timer(1), "timeout")
 	$HUD/Mensagens.hide()
+
 
 func _on_Agua_errado():
 	var cor = get_node("HUD/Mensagens").get_color("font_color")

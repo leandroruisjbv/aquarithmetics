@@ -5,7 +5,7 @@ signal game_over
 signal certo
 signal errado
 
-var diff
+var diff = 0
 
 func _ready():
 	hide()

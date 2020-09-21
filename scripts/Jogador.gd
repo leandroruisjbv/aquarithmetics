@@ -10,7 +10,7 @@ var screen_size  # Size of the game window.
 var text # Texto do Mostrador (display).
 var placar = 0
 var rng = RandomNumberGenerator.new()
-var diff = 1 # Dificuldade (de 1 à 3).
+var diff = 1
 var resposta = "" # É a resposta que o usuário envia, podendo estar errada.
 var resultado = 0 # É o resultado correto.
 var ponto = 0 # Separador de decimais.
@@ -95,13 +95,20 @@ func gera_questao():
 		resultado = rng.randi_range(1, 9)
 		b = rng.randi_range(1, 9)
 		a = resultado * b
-		
+			
 	if op == "+" : # falta considerar os graus de dificuldade
 		print("adição")
-		rng.randomize()
-		a = rng.randi_range(0, 9)
-		b = rng.randi_range(0, 9)
-		resultado = a + b
+		if diff <= 3 : # Fácil (Não pode dar resultado negativo)
+			rng.randomize()
+			a = rng.randi_range(0, 9)
+			b = rng.randi_range(0, 9)
+			resultado = a + b
+
+		else :
+			rng.randomize()
+			a = rng.randi_range(0, (diff * 10))
+			b = rng.randi_range(0, (diff * 10))
+			resultado = a + b
 		
 	if op == "-" :
 		print("subtração")
