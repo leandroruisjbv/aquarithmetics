@@ -91,23 +91,36 @@ func gera_questao():
 	op = gera_operador()
 	if op == "÷" :
 		print("divisaum")
-		rng.randomize()
-		resultado = rng.randi_range(1, 9)
-		b = rng.randi_range(1, 9)
-		a = resultado * b
+		if diff <= 8 : # Fácil
+			rng.randomize()
+			resultado = rng.randi_range(1, 9)
+			b = rng.randi_range(1, 9)
+			a = resultado * b
+		else : # Hard
+			rng.randomize()
+			a = rng.randi_range(1, 99)
+			b = rng.randi_range(1, 9)
+			resultado = a / b 
+
 			
 	if op == "+" : # falta considerar os graus de dificuldade
 		print("adição")
-		if diff <= 3 : # Fácil (Não pode dar resultado negativo)
+		if diff <= 3 : # Fácil
 			rng.randomize()
 			a = rng.randi_range(0, 9)
 			b = rng.randi_range(0, 9)
 			resultado = a + b
-
-		else :
+			
+		elif diff >= 7 : # Hard
 			rng.randomize()
-			a = rng.randi_range(0, (diff * 10))
-			b = rng.randi_range(0, (diff * 10))
+			a = rng.randi_range(1, 999)
+			b = rng.randi_range(1, 999)
+			resultado = a + b
+
+		else : # Médio
+			rng.randomize()
+			a = rng.randi_range(1, 99)
+			b = rng.randi_range(1, 99)
 			resultado = a + b
 		
 	if op == "-" :
@@ -118,7 +131,7 @@ func gera_questao():
 			b = rng.randi_range(1, 9)
 			a = resultado + b
 						
-		elif diff >= 5: # Hard (alcance ainda maior)
+		elif diff >= 6: # Hard (alcance ainda maior)
 			rng.randomize()
 			a = rng.randi_range(0, 99)
 			b = rng.randi_range(0, 99)
@@ -130,13 +143,27 @@ func gera_questao():
 			b = rng.randi_range(0, 9)
 			resultado = a - b
 
-	
 	if op == "x" : # falta considerar os graus de dificuldade
 		print("multiplicação")
-		rng.randomize()
-		a = rng.randi_range(0, 9)
-		b = rng.randi_range(0, 9)
-		resultado = a * b
+		if diff <= 5 : # Fácil (Não pode dar resultado negativo)
+			rng.randomize()
+			a = rng.randi_range(0, 9)
+			b = rng.randi_range(0, 9)
+			resultado = a * b
+						
+		elif diff >= 8: # Hard (alcance ainda maior)
+			rng.randomize()
+			a = rng.randi_range(0, 99)
+			b = rng.randi_range(0, 99)
+			resultado = a * b
+
+		else : # Médio (maior alcance e possibilidade de resultado negativo)
+			rng.randomize()
+			a = rng.randi_range(0, 99)
+			b = rng.randi_range(0, 9)
+			resultado = a * b
+
+
 	
 	var format_string = "%s %s %s = "
 	question = format_string % [a, op, b]
@@ -144,7 +171,7 @@ func gera_questao():
 	pass
 
 func gera_operador():
-	var operador = 'a'
+	var operador = ''
 	var c = rng.randi_range(1, diff)
 
 	if c == 1: operador = '+'
