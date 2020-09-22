@@ -41,8 +41,6 @@ func quit_game():
 	$HUD.acender_luzes()
 	#close_app()
 	
-func certo_errado(txt: String):
-	pass
 
 
 func _on_HUD_start_easy():
