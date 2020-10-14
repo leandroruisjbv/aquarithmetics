@@ -4,7 +4,7 @@ extends KinematicBody2D
 
 signal colidiu
 
-export (float) var speed = 0.23 # Muito carinho com esse valor
+export (float) var speed = 0.178 # Muito carinho com esse valor
 export (int) var gravity = -1
 var velocity = Vector2()
 var not_stoped = false

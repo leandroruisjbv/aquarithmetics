@@ -3,6 +3,7 @@ extends Node2D
 
 var rng = RandomNumberGenerator.new()
 var combo = 0
+var erros = 0
 
 func _process(delta):
 	$Agua.diff = $Jogador.diff
@@ -14,6 +15,7 @@ func _ready():
 
 func new_game(nivel: String):
 	combo = 0
+	erros = 0
 	$Jogador.start(nivel)
 	$Agua.start()
 
@@ -54,12 +56,15 @@ func _on_HUD_start_medium():
 
 func _on_HUD_quit_game():
 	quit_game()
-	
+	 
 
 func _on_Agua_certo():
 	combo += 1
-	if (combo % 4 == 0) : $Jogador.diff += 1
-	if ($Jogador.placar % 100 == 0) : $Jogador.diff += 1
+	erros = 0
+	if $Jogador.placar > 0 :
+		if (combo % 7 == 0) or ($Jogador.placar % 140 == 0):
+			$Jogador.diff += 1
+			$Agua/Ondas.start()
 
 	$HUD.show_message(motiva(true))
 	yield(get_tree().create_timer(1), "timeout")
@@ -67,9 +72,15 @@ func _on_Agua_certo():
 
 
 func _on_Agua_errado():
+	erros += 1
+	combo = 0
+	if erros > 0 :
+		if (erros % 3 == 0):
+			$Jogador.diff -= 1
+	
 	var cor = get_node("HUD/Mensagens").get_color("font_color")
 	get_node("HUD/Mensagens").add_color_override("font_color", Color.red)
-	combo = 0
+
 	$HUD.show_message(motiva(false))
 	yield(get_tree().create_timer(1), "timeout")
 	$HUD/Mensagens.hide()

@@ -88,82 +88,78 @@ func atualiza_display(text_str: String):
 		$CanvasLayer/Label.text = question + resposta
 
 func gera_questao():
+	print("dificuldade: ", diff)
 	op = gera_operador()
 	if op == "÷" :
 		print("divisaum")
-		if diff <= 8 : # Fácil
-			rng.randomize()
-			resultado = rng.randi_range(1, 9)
-			b = rng.randi_range(1, 9)
-			a = resultado * b
-		else : # Hard
-			rng.randomize()
-			a = rng.randi_range(1, 99)
-			b = rng.randi_range(1, 9)
-			resultado = a / b 
 
-			
+		rng.randomize()
+		resultado = rng.randi_range(1, 9)
+		b = rng.randi_range(1, 9)
+		a = resultado * b
+
+
 	if op == "+" : # falta considerar os graus de dificuldade
 		print("adição")
-		if diff <= 3 : # Fácil
-			rng.randomize()
+		rng.randomize()
+		if diff == 1 : # Fácil
 			a = rng.randi_range(0, 9)
 			b = rng.randi_range(0, 9)
-			resultado = a + b
 			
-		elif diff >= 7 : # Hard
-			rng.randomize()
-			a = rng.randi_range(1, 999)
-			b = rng.randi_range(1, 999)
-			resultado = a + b
-
-		else : # Médio
-			rng.randomize()
+		elif diff == 2 or (diff == 3): # Hard
+			a = rng.randi_range(1, 99)
+			b = rng.randi_range(1, 9)
+		
+		elif (diff == 4) or (diff == 5) : # Hard
 			a = rng.randi_range(1, 99)
 			b = rng.randi_range(1, 99)
-			resultado = a + b
+		
+		elif (diff == 6) or (diff == 7) : # Hard
+			a = rng.randi_range(1, 999)
+			b = rng.randi_range(1, 9)
+		
+		elif (diff == 8): # Hard
+			a = rng.randi_range(1, 999)
+			b = rng.randi_range(1, 99)
+			
+		elif (diff == 9): # Hard
+			a = rng.randi_range(1, 999)
+			b = rng.randi_range(1, 999)
+
+		resultado = a + b
 		
 	if op == "-" :
 		print("subtração")
-		if diff <= 3 : # Fácil (Não pode dar resultado negativo)
-			rng.randomize()
+		rng.randomize()
+		
+		if diff == 3 : # Fácil (Não pode dar resultado negativo)
 			resultado = rng.randi_range(0, 9)
 			b = rng.randi_range(1, 9)
 			a = resultado + b
-						
-		elif diff >= 6: # Hard (alcance ainda maior)
-			rng.randomize()
+
+		elif (diff == 4) or (diff == 5): # Médio (Pode dar negativo)
+			a = rng.randi_range(0, 9)
+			b = rng.randi_range(0, 9)
+			resultado = a - b
+
+		elif (diff == 6) or (diff == 7): # Médio difícil (alcance maior)
+			a = rng.randi_range(0, 99)
+			b = rng.randi_range(0, 9)
+			resultado = a - b
+
+		elif (diff == 8) or (diff == 9): # Hard (alcance ainda maior)
 			a = rng.randi_range(0, 99)
 			b = rng.randi_range(0, 99)
 			resultado = a - b
 
-		else : # Médio (maior alcance e possibilidade de resultado negativo)
-			rng.randomize()
-			a = rng.randi_range(1, 99)
-			b = rng.randi_range(0, 9)
-			resultado = a - b
 
 	if op == "x" : # falta considerar os graus de dificuldade
 		print("multiplicação")
-		if diff <= 5 : # Fácil (Não pode dar resultado negativo)
+		if diff <= 5 : # Médio
 			rng.randomize()
-			a = rng.randi_range(0, 9)
-			b = rng.randi_range(0, 9)
+			a = rng.randi_range(0, 10)
+			b = rng.randi_range(0, 10)
 			resultado = a * b
-						
-		elif diff >= 8: # Hard (alcance ainda maior)
-			rng.randomize()
-			a = rng.randi_range(0, 99)
-			b = rng.randi_range(0, 99)
-			resultado = a * b
-
-		else : # Médio (maior alcance e possibilidade de resultado negativo)
-			rng.randomize()
-			a = rng.randi_range(0, 99)
-			b = rng.randi_range(0, 9)
-			resultado = a * b
-
-
 	
 	var format_string = "%s %s %s = "
 	question = format_string % [a, op, b]
@@ -177,12 +173,12 @@ func gera_operador():
 	if c == 1: operador = '+'
 	if c == 2: operador = '+'
 	if c == 3: operador = '-'
-	if c == 4: operador = '-'
+	if c == 4: operador = '+'
 	if c == 5: operador = 'x'
-	if c == 6: operador = 'x'
+	if c == 6: operador = '-'
 	if c == 7: operador = '÷'
-	if c == 8: operador = '÷'
-	if c == 9: operador = '÷'
+	if c == 8: operador = 'x'
+	if c == 9: operador = '-'
 	pass
 
 	return operador
