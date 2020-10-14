@@ -155,7 +155,7 @@ func gera_questao():
 
 	if op == "x" : # falta considerar os graus de dificuldade
 		print("multiplicação")
-		if diff <= 5 : # Médio
+		if diff >= 5 : # Médio
 			rng.randomize()
 			a = rng.randi_range(0, 10)
 			b = rng.randi_range(0, 10)
